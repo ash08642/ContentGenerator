@@ -2,7 +2,7 @@ using ContentGenerator.Models;
 
 namespace ContentGenerator.Services;
 
-public class ContentService
+public class ContentService : IContentService
 {
     private static readonly List<Content> AllContents = [];
 

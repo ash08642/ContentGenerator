@@ -10,10 +10,10 @@ namespace MyApp.Namespace
     [ApiController]
     public class ContentController : ControllerBase
     {
-        private readonly ContentService _contentService;
-        public ContentController()
+        private readonly IContentService _contentService;
+        public ContentController(IContentService contentService)
         {
-            _contentService = new ContentService();
+            _contentService =  contentService;
         }
 
         [HttpGet]
