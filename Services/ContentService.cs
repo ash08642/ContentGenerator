@@ -22,7 +22,7 @@ public class ContentService
         return Task.FromResult(content1);
     }
 
-    public Task<Content?> GetPost(int id) 
+    public Task<Content?> GetContent(int id) 
     {
         return Task.FromResult(AllContents.FirstOrDefault(x => x.Id == id));
     }
