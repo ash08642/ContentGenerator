@@ -23,7 +23,7 @@ namespace MyApp.Namespace
             return Ok(contents);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Content>> GetContent(int id)
         {
             var content = await _contentService.GetContent(id);
@@ -41,7 +41,7 @@ namespace MyApp.Namespace
             return CreatedAtAction(nameof(GetContent), new {id = content.Id}, content);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<ActionResult> UpdateContent(int id, Content content)
         {
             if (id != content.Id)
@@ -56,7 +56,7 @@ namespace MyApp.Namespace
             return Ok(content);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<ActionResult> DeleteContent(int id)
         {
             var post = await _contentService.GetContent(id);
