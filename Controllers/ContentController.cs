@@ -23,11 +23,6 @@ namespace MyApp.Namespace
         [HttpGet]
         public async Task<ActionResult<List<Content>>> GetPosts()
         {
-            var response = await _textGeneratorService.GenerateText("Who is Cristiano Ronaldo");
-            if (response != null)
-            {
-                _logger.LogInformation(response.ToString());
-            }
             var contents = await _contentService.GetAllContents();
             return Ok(contents);
         }
