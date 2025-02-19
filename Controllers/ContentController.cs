@@ -11,14 +11,23 @@ namespace MyApp.Namespace
     public class ContentController : ControllerBase
     {
         private readonly IContentService _contentService;
-        public ContentController(IContentService contentService)
+        private readonly ILogger<ContentController> _logger;
+        private readonly ITextGeneratorService _textGeneratorService;
+        public ContentController(IContentService contentService, ILogger<ContentController> logger, ITextGeneratorService textGeneratorService)
         {
             _contentService =  contentService;
+            _logger = logger;
+            _textGeneratorService = textGeneratorService;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Content>>> GetPosts()
         {
+            var response = await _textGeneratorService.GenerateText("Who is Cristiano Ronaldo");
+            if (response != null)
+            {
+                _logger.LogInformation(response.ToString());
+            }
             var contents = await _contentService.GetAllContents();
             return Ok(contents);
         }
