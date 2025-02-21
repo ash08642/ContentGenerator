@@ -4,9 +4,9 @@ namespace ContentGenerator.Services;
 
 public interface IContentService
 {
-    public Task CreateContent(Content content);
-    public Task<Content?> UpdateContent(int id, Content content);
-    public Task<Content?> GetContent(int id);
-    public Task<List<Content>> GetAllContents();
-    public Task DeleteContent(int id);
+    public Task<bool> CreateContent(Content content);
+    public Task<bool> UpdateContent(Guid id, Content content);
+    public Task<Content?> GetContent(Guid id);
+    public Task<IEnumerable<Content>> GetAllContents();
+    public Task<bool> DeleteContent(Guid id);
 }

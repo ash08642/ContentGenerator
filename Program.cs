@@ -1,4 +1,6 @@
+using ContentGenerator.Data;
 using ContentGenerator.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +28,10 @@ builder.Services.AddHttpClient("Gemeni", httpClient =>
     httpClient.DefaultRequestHeaders.Add(
         HeaderNames.UserAgent, "HttpRequestsSample");
 });
+
+builder.Services.AddDbContext<ContentDbContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
 var app = builder.Build();
 
