@@ -21,15 +21,16 @@ namespace MyApp.Namespace
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Content>>> GetPosts()
+        public async Task<ActionResult<List<Content>>> GetContents()
         {
             var contents = await _contentService.GetAllContents();
             return Ok(contents);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Content>> GetContent(Guid id)
+        public async Task<ActionResult<Content>> GetContent(string id)
         {
+            _logger.LogInformation(id);
             var content = await _contentService.GetContent(id);
             if (content == null)
             {
@@ -41,19 +42,20 @@ namespace MyApp.Namespace
         [HttpPost]
         public async Task<ActionResult<Content>> CreateContent(Content content)
         {
-            bool res = await _contentService.CreateContent(content);
+            await _contentService.CreateContent(content);
+            _logger.LogInformation(content.Id);
             return CreatedAtAction(nameof(GetContent), new {id = content.Id}, content);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateContent(Guid id, Content content)
+        public async Task<ActionResult> UpdateContent(string id, Content content)
         {
             if (id != content.Id)
             {
                 return BadRequest();
             }
             var updatedContent = await _contentService.UpdateContent(id, content);
-            if (updatedContent == false)
+            if (!updatedContent)
             {
                 return NotFound();
             }
@@ -61,7 +63,7 @@ namespace MyApp.Namespace
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteContent(Guid id)
+        public async Task<ActionResult> DeleteContent(string id)
         {
             await _contentService.DeleteContent(id);
             return NoContent();
