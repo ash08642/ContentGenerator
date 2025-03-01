@@ -13,7 +13,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddSingleton<IContentDbService, MongoDbService>();
 builder.Services.AddScoped<IContentService, ContentService>();
 builder.Services.AddSingleton<IHttpClientService, HttpClientService>();
-builder.Services.AddSingleton<ITextGeneratorService, TextGeneratorService>();
+builder.Services.AddSingleton<ITextGeneratorService, GemeniTextGeneratorService>();
+builder.Services.AddSingleton<IAudioGeneratorService, MurfAudioGeneratorService>();
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
@@ -28,6 +29,11 @@ builder.Services.AddHttpClient("Gemeni", httpClient =>
         HeaderNames.Accept, "application/vnd.github.v3+json");
     httpClient.DefaultRequestHeaders.Add(
         HeaderNames.UserAgent, "HttpRequestsSample");
+});
+
+builder.Services.AddHttpClient("Murf", httpClient =>
+{
+    httpClient.BaseAddress = new Uri("https://api.murf.ai/v1/speech/generate");
 });
 
 var app = builder.Build();

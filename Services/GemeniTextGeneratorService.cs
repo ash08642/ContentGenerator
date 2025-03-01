@@ -3,11 +3,11 @@ using System.Text.Json.Nodes;
 
 namespace ContentGenerator.Services;
 
-public class TextGeneratorService : ITextGeneratorService
+public class GemeniTextGeneratorService : ITextGeneratorService
 {
     private readonly IHttpClientService _httpClientService;
-    private readonly ILogger<TextGeneratorService> _logger;
-    public TextGeneratorService(IHttpClientService httpClientService, ILogger<TextGeneratorService> logger)
+    private readonly ILogger<GemeniTextGeneratorService> _logger;
+    public GemeniTextGeneratorService(IHttpClientService httpClientService, ILogger<GemeniTextGeneratorService> logger)
     {
         _httpClientService = httpClientService;
         _logger = logger;

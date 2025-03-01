@@ -37,6 +37,22 @@ namespace MyApp.Namespace
                 return NotFound();
             }
             return Ok(content);
+            /*
+            return new Content{
+                Id = "fakeId",
+                Text = "Hello World",
+                Tongue = Tongue.Deutsch,
+                Type = ContentType.Presentation,
+                AudioData = new AudioData {
+                    AudioFile = "home/audios/hello",
+                    AudioLengthInSeconds = 2.5,
+                    WordDurations = [
+                        new WordDuration{Word="hello", StartMs = 0.0, EndMs = 1.1},
+                        new WordDuration{Word="world", StartMs = 1.3, EndMs = 2.1}
+                    ]
+                }
+            };
+            */
         }
 
         [HttpPost]
