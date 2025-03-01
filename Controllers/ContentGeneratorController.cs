@@ -1,3 +1,4 @@
+using System.IO.Pipelines;
 using ContentGenerator.Models;
 using ContentGenerator.Services;
 using Microsoft.AspNetCore.Http;
@@ -27,12 +28,12 @@ namespace MyApp.Namespace
             return response;
         }
 
+
+
         [HttpPost("audio")]
-        public async Task<ActionResult<AudioData?>> GenerateAudio([FromForm] string text)
+        public async Task<ActionResult<AudioData?>> GenerateAudio(TextRequest textRequest)
         {
-            var response = await _audioGeneratorService.GenerateAudio(text);
-            _logger.LogInformation(response!.ToString());
-            //return response;
+            var response = await _audioGeneratorService.GenerateAudio(textRequest.Text);
             return response;
         }
     }
