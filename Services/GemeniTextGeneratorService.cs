@@ -12,7 +12,7 @@ public class GemeniTextGeneratorService : ITextGeneratorService
         _httpClientService = httpClientService;
         _logger = logger;
     }
-    public async Task<string?> GenerateText(string query)
+    public async Task<string> GenerateText(string query)
     {
         string rawResponse = await _httpClientService.GemeniGetReq(query, 100);
         _logger.LogInformation(rawResponse);

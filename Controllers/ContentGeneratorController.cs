@@ -13,11 +13,14 @@ namespace MyApp.Namespace
         private readonly ILogger<ContentGeneratorController> _logger;
         private readonly ITextGeneratorService _textGeneratorService;
         private readonly IAudioGeneratorService _audioGeneratorService;
-        public ContentGeneratorController(ILogger<ContentGeneratorController> logger, ITextGeneratorService textGeneratorService, IAudioGeneratorService audioGeneratorService)
+        private readonly IContentService _contentService;
+
+        public ContentGeneratorController(ILogger<ContentGeneratorController> logger, ITextGeneratorService textGeneratorService, IAudioGeneratorService audioGeneratorService, IContentService contentService)
         {
             _logger = logger;
             _textGeneratorService = textGeneratorService;
             _audioGeneratorService = audioGeneratorService;
+            _contentService = contentService;
         }
 
         [HttpGet("text/{question:alpha}")]
@@ -28,13 +31,23 @@ namespace MyApp.Namespace
             return response;
         }
 
-
-
         [HttpPost("audio")]
         public async Task<ActionResult<AudioData?>> GenerateAudio(TextRequest textRequest)
         {
             var response = await _audioGeneratorService.GenerateAudio(textRequest.Text);
             return response;
+        }
+
+        [HttpPost("content")]
+        public async Task<ActionResult<Content?>> GenerateContent(TextRequest textRequest)
+        {
+            Content content = new Content();
+            content.Text = await _textGeneratorService.GenerateText(textRequest.Text);
+            content.AudioData = await _audioGeneratorService.GenerateAudio(content.Text);
+        	content.Tongue = textRequest.Tongue;
+            content.Type = textRequest.Type;
+            await _contentService.CreateContent(content);
+            return content;
         }
     }
 }

@@ -13,7 +13,7 @@ public class MurfAudioGeneratorService : IAudioGeneratorService
         _httpClientService = httpClientService;
         _logger = logger;
     }
-    public async Task<AudioData?> GenerateAudio(string query)
+    public async Task<AudioData> GenerateAudio(string query)
     {
         string rawResponse = await _httpClientService.MurfGetReq(query);
         _logger.LogInformation("Logging GenerateAudio");
@@ -27,7 +27,8 @@ public class MurfAudioGeneratorService : IAudioGeneratorService
 
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         GemeniAudioData? gemeniAudioData = JsonSerializer.Deserialize<GemeniAudioData>(rawResponse, options);
-        AudioData audioData = new AudioData {
+        AudioData audioData = new()
+        {
                 AudioFile = "file/not/found 2"
         };
         if (gemeniAudioData != null)

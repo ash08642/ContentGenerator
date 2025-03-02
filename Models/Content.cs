@@ -7,11 +7,11 @@ public class Content
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string? Id {get; set;}
+    public string Id {get; set;} = string.Empty;
     public string Text {get; set;} = string.Empty;
     public ContentType Type {get; set;}
     public Tongue Tongue {get; set;}
-    public AudioData? AudioData {get; set;}
+    public AudioData AudioData {get; set;} = new AudioData();
 }
 
 public class WordDuration

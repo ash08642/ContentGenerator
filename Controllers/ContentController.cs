@@ -12,12 +12,10 @@ namespace MyApp.Namespace
     {
         private readonly IContentService _contentService;
         private readonly ILogger<ContentController> _logger;
-        private readonly ITextGeneratorService _textGeneratorService;
-        public ContentController(IContentService contentService, ILogger<ContentController> logger, ITextGeneratorService textGeneratorService)
+        public ContentController(IContentService contentService, ILogger<ContentController> logger)
         {
             _contentService =  contentService;
             _logger = logger;
-            _textGeneratorService = textGeneratorService;
         }
 
         [HttpGet]
