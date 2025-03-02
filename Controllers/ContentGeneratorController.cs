@@ -4,7 +4,7 @@ using ContentGenerator.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MyApp.Namespace
+namespace ContentGenerator.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

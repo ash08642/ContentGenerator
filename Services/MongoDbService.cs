@@ -1,4 +1,5 @@
 using ContentGenerator.Models;
+using ContentGenerator.Models.Authentication;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -8,13 +9,13 @@ public class MongoDbService : IContentDbService, IUserDbService
 {
     private readonly MongoClient _client;
     private readonly IMongoCollection<Content> _contentCollection;
-    private readonly IMongoCollection<BsonDocument> _userCollection;
+    private readonly IMongoCollection<AppUser> _userCollection;
     public MongoDbService()
     {
         var connectionString = "mongodb://localhost:27017/";
         _client = new MongoClient(connectionString);
         _contentCollection = _client.GetDatabase("ContentGenerator").GetCollection<Content>("Contents");
-        _userCollection = _client.GetDatabase("ContentGenerator").GetCollection<BsonDocument>("Users");
+        _userCollection = _client.GetDatabase("ContentGenerator").GetCollection<AppUser>("Users");
     }
 
     public async Task<IEnumerable<Content>> Content_GetAsync()
@@ -64,5 +65,30 @@ public class MongoDbService : IContentDbService, IUserDbService
             }
         }
         return true;
+    }
+
+    public async Task<bool> DoesUserExist(string username)
+    {
+        var user = await _userCollection.Find(s => s.UserName == username).FirstOrDefaultAsync();;
+        if (user != null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public async Task User_CreateAsync(AppUser user)
+    {
+        await _userCollection.InsertOneAsync(user);
+    }
+
+    public async Task<bool> DoesUserExist(string username, string hashedPassword)
+    {
+        var user = await _userCollection.Find(s => s.UserName == username && s.PasswordHash == hashedPassword).FirstOrDefaultAsync();;
+        if (user != null)
+        {
+            return true;
+        }
+        return false;
     }
 }
