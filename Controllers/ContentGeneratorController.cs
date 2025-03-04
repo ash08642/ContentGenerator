@@ -1,12 +1,14 @@
-using System.IO.Pipelines;
 using ContentGenerator.Models;
+using ContentGenerator.Models.Authentication;
 using ContentGenerator.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContentGenerator.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(Roles = $"{UserRoles.VipUser},{UserRoles.Administrator}")]
     [ApiController]
     public class ContentGeneratorController : ControllerBase
     {

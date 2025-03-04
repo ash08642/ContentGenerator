@@ -40,12 +40,13 @@ namespace ContentGenerator.Controllers
                 {
                     UserName = model.UserName,
                     Email = model.Email,
-                    SecurityStamp = Guid.NewGuid().ToString()
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    UserRole = UserRoles.User
                 };
                 // Try to save the user
                 await _userService.CreateUser(user, model.Password);
                 // If the user is successfully created, return Ok
-                var token = GenerateToken(model.UserName);
+                var token = GenerateToken(model.UserName, UserRoles.User);
                 return Ok(new { token });
             }
             // If we got this far, something failed, redisplay form
@@ -63,7 +64,7 @@ namespace ContentGenerator.Controllers
             {
                 if (await _userService.CheckPassword(model.UserName, model.Password))
                 {
-                    var token = GenerateToken(model.UserName);
+                    var token = GenerateToken(model.UserName, UserRoles.Administrator);
                     return Ok(new { token });
                 }
                 // If the user is not found, display an error message
@@ -72,7 +73,7 @@ namespace ContentGenerator.Controllers
             return BadRequest(ModelState);
         }
 
-        private string? GenerateToken(string userName)
+        private string? GenerateToken(string userName, string userRole)
         {
             var secret = _configuration["JwtConfig:Secret"];
             var issuer = _configuration["JwtConfig:ValidIssuer"];
@@ -83,13 +84,14 @@ namespace ContentGenerator.Controllers
             }
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
             var tokenHandler = new JwtSecurityTokenHandler();
+            var claims = new List<Claim>{
+                new (ClaimTypes.Name, userName),
+                new (ClaimTypes.Role, userRole),
+            };
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.Name, userName)
-                }),
+                Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddDays(1),
                 Issuer = issuer,
                 Audience = audience,

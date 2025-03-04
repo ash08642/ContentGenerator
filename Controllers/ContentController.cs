@@ -1,4 +1,5 @@
 using ContentGenerator.Models;
+using ContentGenerator.Models.Authentication;
 using ContentGenerator.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -8,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ContentGenerator.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(Roles = $"{UserRoles.User},{UserRoles.VipUser},{UserRoles.Administrator}")]
     [ApiController]
     public class ContentController : ControllerBase
     {
