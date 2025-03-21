@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ContentGenerator.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(Roles = $"{UserRoles.VipUser},{UserRoles.Administrator}")]
+    //[Authorize(Roles = $"{UserRoles.VipUser},{UserRoles.Administrator}")]
     [ApiController]
     public class ContentGeneratorController : ControllerBase
     {

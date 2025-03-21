@@ -46,9 +46,9 @@ builder.Services.AddSingleton<IContentDbService, MongoDbService>();
 builder.Services.AddSingleton<IUserDbService, MongoDbService>();
 builder.Services.AddScoped<IContentService, ContentService>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddSingleton<IHttpClientService, HttpClientService>();
 builder.Services.AddSingleton<ITextGeneratorService, GemeniTextGeneratorService>();
-builder.Services.AddSingleton<IAudioGeneratorService, MurfAudioGeneratorService>();
+//builder.Services.AddSingleton<IAudioGeneratorService, MurfAudioGeneratorService>();
+builder.Services.AddSingleton<IAudioGeneratorService, EleveLabsAudioGeneratorService>();
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
@@ -64,10 +64,13 @@ builder.Services.AddHttpClient("Gemeni", httpClient =>
     httpClient.DefaultRequestHeaders.Add(
         HeaderNames.UserAgent, "HttpRequestsSample");
 });
-
 builder.Services.AddHttpClient("Murf", httpClient =>
 {
     httpClient.BaseAddress = new Uri("https://api.murf.ai/v1/speech/generate");
+});
+builder.Services.AddHttpClient("ElevenLabs", httpClient =>
+{
+    httpClient.BaseAddress = new Uri("https://api.elevenlabs.io/v1/text-to-speech");
 });
 
 var app = builder.Build();

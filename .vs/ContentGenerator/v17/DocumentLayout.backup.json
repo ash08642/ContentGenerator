@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Practice\\ContentGenerator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8394DD5D-D896-63A9-AFD6-F91DFFA8BE94}|ContentGenerator.csproj|d:\\practice\\contentgenerator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8394DD5D-D896-63A9-AFD6-F91DFFA8BE94}|ContentGenerator.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8394DD5D-D896-63A9-AFD6-F91DFFA8BE94}|ContentGenerator.csproj|d:\\practice\\contentgenerator\\services\\gemenitextgeneratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8394DD5D-D896-63A9-AFD6-F91DFFA8BE94}|ContentGenerator.csproj|solutionrelative:services\\gemenitextgeneratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8394DD5D-D896-63A9-AFD6-F91DFFA8BE94}|ContentGenerator.csproj|d:\\practice\\contentgenerator\\services\\murfaudiogeneratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8394DD5D-D896-63A9-AFD6-F91DFFA8BE94}|ContentGenerator.csproj|solutionrelative:services\\murfaudiogeneratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8394DD5D-D896-63A9-AFD6-F91DFFA8BE94}|ContentGenerator.csproj|d:\\practice\\contentgenerator\\services\\elevelabsaudiogeneratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8394DD5D-D896-63A9-AFD6-F91DFFA8BE94}|ContentGenerator.csproj|solutionrelative:services\\elevelabsaudiogeneratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GemeniTextGeneratorService.cs",
+              "DocumentMoniker": "D:\\Practice\\ContentGenerator\\Services\\GemeniTextGeneratorService.cs",
+              "RelativeDocumentMoniker": "Services\\GemeniTextGeneratorService.cs",
+              "ToolTip": "D:\\Practice\\ContentGenerator\\Services\\GemeniTextGeneratorService.cs",
+              "RelativeToolTip": "Services\\GemeniTextGeneratorService.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA1wBQAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T20:36:22.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MurfAudioGeneratorService.cs",
+              "DocumentMoniker": "D:\\Practice\\ContentGenerator\\Services\\MurfAudioGeneratorService.cs",
+              "RelativeDocumentMoniker": "Services\\MurfAudioGeneratorService.cs",
+              "ToolTip": "D:\\Practice\\ContentGenerator\\Services\\MurfAudioGeneratorService.cs",
+              "RelativeToolTip": "Services\\MurfAudioGeneratorService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T16:24:06.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Practice\\ContentGenerator\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Practice\\ContentGenerator\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T16:13:53.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EleveLabsAudioGeneratorService.cs",
+              "DocumentMoniker": "D:\\Practice\\ContentGenerator\\Services\\EleveLabsAudioGeneratorService.cs",
+              "RelativeDocumentMoniker": "Services\\EleveLabsAudioGeneratorService.cs",
+              "ToolTip": "D:\\Practice\\ContentGenerator\\Services\\EleveLabsAudioGeneratorService.cs",
+              "RelativeToolTip": "Services\\EleveLabsAudioGeneratorService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T16:10:44.638Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

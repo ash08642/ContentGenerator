@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ContentGenerator.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(Roles = $"{UserRoles.User},{UserRoles.VipUser},{UserRoles.Administrator}")]
+    //[Authorize(Roles = $"{UserRoles.User},{UserRoles.VipUser},{UserRoles.Administrator}")]
     [ApiController]
     public class ContentController : ControllerBase
     {
@@ -25,7 +25,15 @@ namespace ContentGenerator.Controllers
         public async Task<ActionResult<List<Content>>> GetContents()
         {
             var contents = await _contentService.GetAllContents();
-            return Ok(contents);
+            List<Content> myContents = [];
+            foreach (var content in contents)
+            {
+                if (content.AudioData.WordDurations.Count > 0)
+                {
+                    myContents.Add(content);
+                }
+            }
+            return Ok(myContents);
         }
 
         [HttpGet("{id}")]
